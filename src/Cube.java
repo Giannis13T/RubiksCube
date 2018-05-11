@@ -9,25 +9,43 @@ public class Cube {
 	// Array representing a cube. Dimensions are [rows][columns][sides] where sides={front,right,back,left,up,down}
 	private Color[][][] cube = new Color[ROWS][COLUMNS][6];
 	
-	
+	/**
+	 * Creates a Cube object with a Rubik's cube as an argument
+	 * @param c A 3-dimensional array representing a Rubik's cube
+	 */
 	public Cube(Color[][][] c) {
 		cube = c;
 	}
 	
-	
-	public void rotateClockwise() {
+	/**
+	 * Rotates the cube clockwise
+	 * @param row The row of the cube to rotate
+	 */
+	public void rotateClockwise(int row) {
 		
 	}
 	
-	public void rotateCounterClockwise() {
+	/**
+	 * Rotates the cube counterclockwise
+	 * @param row The row of the cube to rotate
+	 */
+	public void rotateCounterClockwise(int row) {
 		
 	}
 	
-	public void rotateUp() {
+	/**
+	 * Rotates the cube upwards
+	 * @param column The column of the cube to rotate
+	 */
+	public void rotateUp(int column) {
 		
 	}
 	
-	public void rotateDown() {
+	/**
+	 * Rotates the cube downwards
+	 * @param column The column of the cube to rotate
+	 */
+	public void rotateDown(int column) {
 		
 	}
 }
