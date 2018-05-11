@@ -22,7 +22,13 @@ public class Cube {
 	 * @param row The row of the cube to rotate
 	 */
 	public void rotateClockwise(int row) {
-		
+		if (row==1) {
+			
+		} else if (row==2) {
+			
+		} else if (row==3) {
+			
+		}
 	}
 	
 	/**
@@ -48,4 +54,27 @@ public class Cube {
 	public void rotateDown(int column) {
 		
 	}
+	
+	// Rotates a row, clockwise if c==0, counterclockwise if c==1
+	private void rotateRow(int c, int row, int side) {
+		Color[] temp = new Color[ROWS];
+		if (c==0) {
+			for (int i=2; i>=0; i--) {
+				for (int j=0; j<temp.length; j++) {
+					temp[j] = cube[row][j][i];
+					cube[row][j][i] = cube[row][j][3];
+					cube[row][j][3] = temp[j];
+				}
+			}
+		} else if (c==1) {
+			for (int i=0; i<3; i++) {
+				for (int j=0; j<temp.length; j++) {
+					temp[j] = cube[row][j][i];
+					cube[row][j][i] = cube[row][j][3];
+					cube[row][j][3] = temp[j];
+				}
+			}
+		}
+	}
+	
 }
