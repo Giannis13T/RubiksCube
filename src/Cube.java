@@ -23,11 +23,33 @@ public class Cube {
 	 */
 	public void rotateClockwise(int row) {
 		if (row==1) {
-			
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][4];
+				colTwo[i] = cube[i][1][4];
+				colThree[i] = cube[i][2][4];
+				cube[0][i][4] = colThree[i];
+				cube[1][i][4] = colTwo[i];
+				cube[2][i][4] = colOne[i];
+			}
+			rotateRow(0,row);
 		} else if (row==2) {
-			
+			rotateRow(0,row);
 		} else if (row==3) {
-			
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][5];
+				colTwo[i] = cube[i][1][5];
+				colThree[i] = cube[i][2][5];
+				cube[0][i][5] = colThree[i];
+				cube[1][i][5] = colTwo[i];
+				cube[2][i][5] = colOne[i];
+			}
+			rotateRow(0,row);
 		}
 	}
 	
