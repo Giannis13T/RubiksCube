@@ -6,7 +6,7 @@ public class Cube {
 	private final int ROWS = 3;
 	private final int COLUMNS = 3;
 	
-	// Array representing a cube. Dimensions are [rows][columns][sides] where sides={front,right,back,left,up,down}
+	// Array representing a cube. Dimensions are [rows][columns][sides] where sides={front,right,back,left,top,bottom}
 	private Color[][][] cube = new Color[ROWS][COLUMNS][6];
 	
 	/**
@@ -18,7 +18,7 @@ public class Cube {
 	}
 	
 	/**
-	 * Rotates the cube clockwise
+	 * Rotates a front side's row clockwise
 	 * @param row The row of the cube to rotate
 	 */
 	public void rotateClockwise(int row) {
@@ -32,7 +32,7 @@ public class Cube {
 	}
 	
 	/**
-	 * Rotates the cube counterclockwise
+	 * Rotates a front side's row counterclockwise
 	 * @param row The row of the cube to rotate
 	 */
 	public void rotateCounterClockwise(int row) {
@@ -40,7 +40,7 @@ public class Cube {
 	}
 	
 	/**
-	 * Rotates the cube upwards
+	 * Rotates a front side's column upwards
 	 * @param column The column of the cube to rotate
 	 */
 	public void rotateUp(int column) {
@@ -48,16 +48,32 @@ public class Cube {
 	}
 	
 	/**
-	 * Rotates the cube downwards
+	 * Rotates a front side's column downwards
 	 * @param column The column of the cube to rotate
 	 */
 	public void rotateDown(int column) {
 		
 	}
 	
-	// Rotates a row, clockwise if c==0, counterclockwise if c==1
+	/**
+	 * Rotates a top side's row clockwise
+	 * @param row The row of the cube to rotate
+	 */
+	public void topRotateClockwise(int row) {
+		
+	}
+	
+	/**
+	 * Rotates a top side's row counterclockwise
+	 * @param row The row of the cube to rotate
+	 */
+	public void topRotateCounterClockwise(int row) {
+		
+	}
+	
+	// Rotates a front side's row, clockwise if c==0, counterclockwise if c==1
 	private void rotateRow(int c, int row, int side) {
-		Color[] temp = new Color[ROWS];
+		Color[] temp = new Color[COLUMNS];
 		if (c==0) {
 			for (int i=2; i>=0; i--) {
 				for (int j=0; j<temp.length; j++) {
@@ -73,6 +89,35 @@ public class Cube {
 					cube[row][j][i] = cube[row][j][3];
 					cube[row][j][3] = temp[j];
 				}
+			}
+		}
+	}
+	
+	// Rotates a front side's column, upwards if c==0, downwards if c==1
+	private void rotateColumn(int c, int column, int side) {
+		Color[] tempf = new Color[ROWS];
+		Color[] tempb = new Color[ROWS];
+		Color[] tempu = new Color[ROWS];
+		Color[] tempd = new Color[ROWS];
+		for (int i=0; i<ROWS; i++) {
+			tempf[i] = cube[i][column][0];
+			tempb[i] = cube[i][column][2];
+			tempu[i] = cube[i][column][4];
+			tempd[i] = cube[i][column][5];
+		}
+		if (c==0) {
+			for (int i=0; i<ROWS; i++) {
+				cube[i][column][0] = tempd[i];
+				cube[i][column][2] = tempu[i];
+				cube[i][column][4] = tempf[i];
+				cube[i][column][5] = tempb[i];
+			}
+		} else if (c==1) {
+			for (int i=0; i<ROWS; i++) {
+				cube[i][column][0] = tempu[i];
+				cube[i][column][2] = tempd[i];
+				cube[i][column][4] = tempb[i];
+				cube[i][column][5] = tempf[i];
 			}
 		}
 	}
