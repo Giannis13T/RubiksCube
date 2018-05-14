@@ -72,7 +72,7 @@ public class Cube {
 	}
 	
 	// Rotates a front side's row, clockwise if c==0, counterclockwise if c==1
-	private void rotateRow(int c, int row, int side) {
+	private void rotateRow(int c, int row) {
 		Color[] temp = new Color[COLUMNS];
 		if (c==0) {
 			for (int i=2; i>=0; i--) {
@@ -94,7 +94,7 @@ public class Cube {
 	}
 	
 	// Rotates a front side's column, upwards if c==0, downwards if c==1
-	private void rotateColumn(int c, int column, int side) {
+	private void rotateColumn(int c, int column) {
 		Color[] tempf = new Color[ROWS];
 		Color[] tempb = new Color[ROWS];
 		Color[] tempu = new Color[ROWS];
