@@ -22,7 +22,7 @@ public class Cube {
 	 * @param row The row of the cube to rotate
 	 */
 	public void rotateClockwise(int row) {
-		if (row==1) {
+		if (row==0) {
 			for (int i=0; i<3; i++) {
 				Color[] rowOne = new Color[COLUMNS];
 				Color[] rowTwo = new Color[COLUMNS];
@@ -35,9 +35,9 @@ public class Cube {
 				cube[i][0][4] = rowThree[i];
 			}
 			rotateRow(0,row);
-		} else if (row==2) {
+		} else if (row==1) {
 			rotateRow(0,row);
-		} else if (row==3) {
+		} else if (row==2) {
 			for (int i=0; i<3; i++) {
 				Color[] rowOne = new Color[COLUMNS];
 				Color[] rowTwo = new Color[COLUMNS];
@@ -58,7 +58,7 @@ public class Cube {
 	 * @param row The row of the cube to rotate
 	 */
 	public void rotateCounterClockwise(int row) {
-		if (row==1) {
+		if (row==0) {
 			for (int i=0; i<3; i++) {
 				Color[] colOne = new Color[ROWS];
 				Color[] colTwo = new Color[ROWS];
@@ -71,9 +71,9 @@ public class Cube {
 				cube[2][i][4] = colOne[i];
 			}
 			rotateRow(1,row);
-		} else if (row==2) {
+		} else if (row==1) {
 			rotateRow(1,row);
-		} else if (row==3) {
+		} else if (row==2) {
 			for (int i=0; i<3; i++) {
 				Color[] colOne = new Color[ROWS];
 				Color[] colTwo = new Color[ROWS];
@@ -94,7 +94,35 @@ public class Cube {
 	 * @param column The column of the cube to rotate
 	 */
 	public void rotateUp(int column) {
-		
+		if (column==0) {
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][3];
+				colTwo[i] = cube[i][1][3];
+				colThree[i] = cube[i][2][3];
+				cube[0][i][3] = colThree[i];
+				cube[1][i][3] = colTwo[i];
+				cube[2][i][3] = colOne[i];
+			}
+			rotateColumn(0,column);
+		} else if (column==1) {
+			rotateColumn(0,column);
+		} else if (column==2) {
+			for (int i=0; i<3; i++) {
+				Color[] rowOne = new Color[COLUMNS];
+				Color[] rowTwo = new Color[COLUMNS];
+				Color[] rowThree = new Color[COLUMNS];
+				rowOne[i] = cube[0][i][1];
+				rowTwo[i] = cube[1][i][1];
+				rowThree[i] = cube[2][i][1];
+				cube[i][2][1] = rowOne[i];
+				cube[i][1][1] = rowTwo[i];
+				cube[i][0][1] = rowThree[i];
+			}
+			rotateColumn(0,column);
+		}
 	}
 	
 	/**
@@ -102,7 +130,35 @@ public class Cube {
 	 * @param column The column of the cube to rotate
 	 */
 	public void rotateDown(int column) {
-		
+		if (column==0) {
+			for (int i=0; i<3; i++) {
+				Color[] rowOne = new Color[COLUMNS];
+				Color[] rowTwo = new Color[COLUMNS];
+				Color[] rowThree = new Color[COLUMNS];
+				rowOne[i] = cube[0][i][3];
+				rowTwo[i] = cube[1][i][3];
+				rowThree[i] = cube[2][i][3];
+				cube[i][2][3] = rowOne[i];
+				cube[i][1][3] = rowTwo[i];
+				cube[i][0][3] = rowThree[i];
+			}
+			rotateColumn(1,column);
+		} else if (column==1) {
+			rotateColumn(1,column);
+		} else if (column==2) {
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][1];
+				colTwo[i] = cube[i][1][1];
+				colThree[i] = cube[i][2][1];
+				cube[0][i][1] = colThree[i];
+				cube[1][i][1] = colTwo[i];
+				cube[2][i][1] = colOne[i];
+			}
+			rotateColumn(1,column);
+		}
 	}
 	
 	/**
