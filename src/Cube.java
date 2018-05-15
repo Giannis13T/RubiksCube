@@ -163,18 +163,74 @@ public class Cube {
 	
 	/**
 	 * Rotates a top side's row clockwise
-	 * @param row The row of the cube to rotate
+	 * @param row The cube's top side row to rotate
 	 */
 	public void topRotateClockwise(int row) {
-		
+		if (row==0) {
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][2];
+				colTwo[i] = cube[i][1][2];
+				colThree[i] = cube[i][2][2];
+				cube[0][i][2] = colThree[i];
+				cube[1][i][2] = colTwo[i];
+				cube[2][i][2] = colOne[i];
+			}
+			topRotateRow(0,row);
+		} else if (row==1) {
+			topRotateRow(0,row);
+		} else if (row==2) {
+			for (int i=0; i<3; i++) {
+				Color[] rowOne = new Color[COLUMNS];
+				Color[] rowTwo = new Color[COLUMNS];
+				Color[] rowThree = new Color[COLUMNS];
+				rowOne[i] = cube[0][i][0];
+				rowTwo[i] = cube[1][i][0];
+				rowThree[i] = cube[2][i][0];
+				cube[i][2][0] = rowOne[i];
+				cube[i][1][0] = rowTwo[i];
+				cube[i][0][0] = rowThree[i];
+			}
+			topRotateRow(0,row);
+		}
 	}
 	
 	/**
 	 * Rotates a top side's row counterclockwise
-	 * @param row The row of the cube to rotate
+	 * @param row The cube's top side row to rotate
 	 */
 	public void topRotateCounterClockwise(int row) {
-		
+		if (row==0) {
+			for (int i=0; i<3; i++) {
+				Color[] rowOne = new Color[COLUMNS];
+				Color[] rowTwo = new Color[COLUMNS];
+				Color[] rowThree = new Color[COLUMNS];
+				rowOne[i] = cube[0][i][2];
+				rowTwo[i] = cube[1][i][2];
+				rowThree[i] = cube[2][i][2];
+				cube[i][2][2] = rowOne[i];
+				cube[i][1][2] = rowTwo[i];
+				cube[i][0][2] = rowThree[i];
+			}
+			topRotateRow(1,row);
+		} else if (row==1) {
+			topRotateRow(1,row);
+		} else if (row==2) {
+			for (int i=0; i<3; i++) {
+				Color[] colOne = new Color[ROWS];
+				Color[] colTwo = new Color[ROWS];
+				Color[] colThree = new Color[ROWS];
+				colOne[i] = cube[i][0][0];
+				colTwo[i] = cube[i][1][0];
+				colThree[i] = cube[i][2][0];
+				cube[0][i][0] = colThree[i];
+				cube[1][i][0] = colTwo[i];
+				cube[2][i][0] = colOne[i];
+			}
+			topRotateRow(1,row);
+		}
 	}
 	
 	// Rotates a front side's row, clockwise if c==0, counterclockwise if c==1
