@@ -17,6 +17,15 @@ public class Cube {
 		cube = c;
 	}
 	
+	
+	/**
+	 * Get the cube
+	 * @return The cube
+	 */
+	public Color[][][] getCube() {
+		return cube;
+	}
+	
 	/**
 	 * Rotates a front side's row clockwise
 	 * @param row The row of the cube to rotate
